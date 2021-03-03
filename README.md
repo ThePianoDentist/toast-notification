@@ -2,7 +2,15 @@
 
 bit overcomplicated cos copy-pasted from my other more complex project.
 
-it's still using the kettle-on domain.
+also ignore the docker-compose stuff.
 
-cos android nowadays requires you to do https requests. and i have domain kettle-on, so can make certs for it.
-(self-signed certs might work, but effort to get that working, when already got certbot working)
+Im not using https with my android app due to android 7.0 boringssl issue with elliptic curvey things.
+
+Also if you want to try and get docker-compose working,
+
+there is a chicken and egg scenario where,
+
+you need nginx container running for certbot to succeed.
+you need certbot container to have run for nginx container to succeed.
+
+I resolved this by commenting out the https portion of nginx conf, letting certbot succeed (important to remove the --staging when its working), and then adding it back in.

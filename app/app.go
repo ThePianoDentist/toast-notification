@@ -51,8 +51,8 @@ func (a *App) setupRouter() {
 		func(w http.ResponseWriter, r *http.Request) {
 			return
 		})
-	a.Router.Methods(http.MethodPost).Path("/register").Handler(&app_context.CtxHandler{a.appCtx, handlers.PostUser})
-	a.Router.Methods(http.MethodGet).Path("/ready").Handler(&app_context.CtxHandler{a.appCtx, handlers.ToastNotify})
+	a.Router.Methods(http.MethodPost).Path("/register/").Handler(&app_context.CtxHandler{a.appCtx, handlers.PostUser})
+	a.Router.Methods(http.MethodGet).Path("/ready/").Handler(&app_context.CtxHandler{a.appCtx, handlers.ToastNotify})
 	a.Router.Use(middleware.AccessControl)
 	a.Router.Use(middleware.RequireJsonContentType)
 }
